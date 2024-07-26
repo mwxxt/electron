@@ -6,46 +6,79 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('user', '0002_employee_student'),
+        ("user", "0002_employee_student"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
+            name="user",
             options={},
         ),
         migrations.AlterModelTable(
-            name='user',
-            table='user',
+            name="user",
+            table="user",
         ),
         migrations.CreateModel(
-            name='EmployeeProfile',
+            name="EmployeeProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('middle_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('birth_date', models.DateField(blank=True, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(blank=True, max_length=150, null=True)),
+                ("last_name", models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "middle_name",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("birth_date", models.DateField(blank=True, null=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'db_table': 'employee_profile',
+                "db_table": "employee_profile",
             },
         ),
         migrations.CreateModel(
-            name='StudentProfile',
+            name="StudentProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('middle_name', models.CharField(blank=True, max_length=150, null=True)),
-                ('birth_date', models.DateField(blank=True, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(blank=True, max_length=150, null=True)),
+                ("last_name", models.CharField(blank=True, max_length=150, null=True)),
+                (
+                    "middle_name",
+                    models.CharField(blank=True, max_length=150, null=True),
+                ),
+                ("birth_date", models.DateField(blank=True, null=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'db_table': 'student_profile',
+                "db_table": "student_profile",
             },
         ),
     ]
