@@ -11,6 +11,8 @@ django = "^5.0.7"
 ruff = "^0.5.5"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "^8.0.0"}
 
+[tool.ruff]
+line-length = 250
 
 [build-system]
 requires = ["poetry-core"]

@@ -28,22 +28,12 @@ class StudentProfile(models.Model):
         related_name="student_profile",
         verbose_name="Пользователь",
     )
-    first_name = models.CharField(
-        max_length=150, null=True, blank=True, verbose_name="Имя"
-    )
-    last_name = models.CharField(
-        max_length=150, null=True, blank=True, verbose_name="Фамилия"
-    )
-    middle_name = models.CharField(
-        max_length=150, null=True, blank=True, verbose_name="Отчество"
-    )
+    first_name = models.CharField(max_length=150, null=True, blank=True, verbose_name="Имя")
+    last_name = models.CharField(max_length=150, null=True, blank=True, verbose_name="Фамилия")
+    middle_name = models.CharField(max_length=150, null=True, blank=True, verbose_name="Отчество")
     birth_date = models.DateField(null=True, blank=True, verbose_name="Дата рождения")
-    gender = models.CharField(
-        choices=GENDER, max_length=8, null=True, blank=True, verbose_name="Пол"
-    )
-    phone_number = PhoneNumberField(
-        unique=True, null=True, blank=False, verbose_name="Номер телефона"
-    )
+    gender = models.CharField(choices=GENDER, max_length=8, null=True, blank=True, verbose_name="Пол")
+    phone_number = PhoneNumberField(unique=True, null=True, blank=False, verbose_name="Номер телефона")
 
     class Meta:
         verbose_name = "student"
