@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "user",
-    "employee",
-    "student",
+    "univer.employee",
+    "univer.student",
+    "univer.branch",
     "purchase",
 ]
 
@@ -135,8 +136,9 @@ DATABASES = {
 
 MIGRATION_MODULES = {
     "user": "config.migrations.user_m",
-    "employee": "config.migrations.employee_m",
-    "student": "config.migrations.student_m",
+    "univer.employee": "config.migrations.employee_m",
+    "univer.student": "config.migrations.student_m",
+    "univer.branch": "config.migrations.branch_m",
     "purchase": "config.migrations.purchase_m",
 }
 
