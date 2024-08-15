@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import User
-from employee.models import EmployeeProfile
-from student.models import StudentProfile
+from univer.employee.models import EmployeeProfile
+from univer.student.models import StudentProfile
 
 
 # User
