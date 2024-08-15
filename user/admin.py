@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import User
 from univer.employee.models import EmployeeProfile
 from univer.student.models import StudentProfile
-
+from univer.branch.models import UniverBranch
 
 # User
 class EmployeeProfileStackedInline(admin.StackedInline):
@@ -48,3 +48,6 @@ class StudentProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(StudentProfile, StudentProfileAdmin)
+
+#Univer branch
+admin.site.register(UniverBranch)
