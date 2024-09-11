@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import User
+from . import models
+from django.contrib.admin.models import LogEntry
 from univer.employee.models import EmployeeProfile
 from univer.student.models import StudentProfile
 from univer.branch.models import UniverBranch

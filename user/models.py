@@ -14,7 +14,7 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.role = self.base_role
-            return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = "user"

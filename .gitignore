@@ -6,6 +6,8 @@
 #linter
 .ruff_cache
 
+*.DS_Store
+
 # Django #
 *.log
 *.pot
