@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,7 +37,13 @@ AUTH_USER_MODEL = "user.User"
 INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
-    "jazzmin",
+    # "jazzmin",
+    "unfold",
+    "unfold.contrib.inlines",
+    "unfold.contrib.simple_history",
+    "unfold.contrib.import_export",
+    "simple_history",
+    "import_export",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -58,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "simple_history.middleware.HistoryRequestMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -176,6 +184,8 @@ PHONENUMBER_DEFAULT_REGION = "KG"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = "static/"
 

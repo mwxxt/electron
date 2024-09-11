@@ -4,6 +4,7 @@ from django.contrib.auth.models import BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from simple_history.models import HistoricalRecords
 
 
 class EmployeeManager(BaseUserManager):
@@ -35,7 +36,11 @@ class EmployeeProfile(models.Model):
     gender = models.CharField(choices=GENDER, max_length=8, null=True, blank=True, verbose_name="Пол")
     phone_number = PhoneNumberField(unique=True, null=True, blank=False, verbose_name="Номер телефона")
     email = models.EmailField(unique=True, null=True, blank=False, verbose_name="Почта")
+    history = HistoricalRecords()
 
+    def __str__(self):
+        return f"{self.last_name or 'Неизвестно'} {self.first_name or 'Неизвестно'}"
+    
     class Meta:
         verbose_name = "employee"
         verbose_name_plural = "employees"
