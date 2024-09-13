@@ -20,38 +20,6 @@ class StudentProfileStackedInline(StackedInline):
     can_delete = True
 
 
-@admin.register(User)
+@admin.register(models.User)
 class UserAdmin(ModelAdmin):
     inlines = [EmployeeProfileStackedInline, StudentProfileStackedInline]
-
-
-# Employee
-@admin.register(EmployeeProfile)
-class EmployeeProfileAdmin(ModelAdmin, ImportExportModelAdmin):
-    list_display = ("full_name", "user")
-    search_fields = ("first_name", "last_name", "middle_name")
-    import_form_class = ImportForm
-    export_form_class = ExportForm
-    export_form_class = SelectableFieldsExportForm
-
-    def full_name(self, obj):
-        return f"{obj.first_name} {obj.last_name}"
-
-    full_name.short_description = "full name"
-
-
-# Student
-@admin.register(StudentProfile)
-class StudentProfileAdmin(ModelAdmin):
-    list_display = ("full_name", "user")
-    search_fields = ("first_name", "last_name", "middle_name")
-
-    def full_name(self, obj):
-        return f"{obj.first_name} {obj.last_name}"
-
-    full_name.short_description = "full name"
-
-#Univer branch
-@admin.register(UniverBranch)
-class UniverBranchAdmin(ModelAdmin):
-    list_display = ("id", "title")
