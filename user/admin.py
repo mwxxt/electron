@@ -1,50 +1,33 @@
 from django.contrib import admin
-from .models import User
+from . import models
+from django.contrib.auth.models import Group
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from univer.employee.models import EmployeeProfile
 from univer.student.models import StudentProfile
-
+from unfold.admin import ModelAdmin, StackedInline
+from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 
 # User
-class EmployeeProfileStackedInline(admin.StackedInline):
+class EmployeeProfileStackedInline(StackedInline):
     model = EmployeeProfile
     can_delete = True
 
 
-class StudentProfileStackedInline(admin.StackedInline):
+class StudentProfileStackedInline(StackedInline):
     model = StudentProfile
     can_delete = True
 
 
-class UserAdmin(admin.ModelAdmin):
+@admin.register(models.User)
+class UserAdmin(BaseUserAdmin, ModelAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    change_password_form = AdminPasswordChangeForm
     inlines = [EmployeeProfileStackedInline, StudentProfileStackedInline]
 
+admin.site.unregister(Group)
 
-admin.site.register(User, UserAdmin)
-
-
-# Employee
-class EmployeeProfileAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "user")
-    search_fields = ("first_name", "last_name", "middle_name")
-
-    def full_name(self, obj):
-        return f"{obj.first_name} {obj.last_name}"
-
-    full_name.short_description = "full name"
-
-
-admin.site.register(EmployeeProfile, EmployeeProfileAdmin)
-
-
-# Student
-class StudentProfileAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "user")
-    search_fields = ("first_name", "last_name", "middle_name")
-
-    def full_name(self, obj):
-        return f"{obj.first_name} {obj.last_name}"
-
-    full_name.short_description = "full name"
-
-
-admin.site.register(StudentProfile, StudentProfileAdmin)
+@admin.register(Group)
+class GroupAdmin(BaseGroupAdmin, ModelAdmin):
+    pass
