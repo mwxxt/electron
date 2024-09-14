@@ -34,27 +34,34 @@ AUTH_USER_MODEL = "user.User"
 
 # Application definition
 
-INSTALLED_APPS = [
+THIRD_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
-    # "jazzmin",
     "unfold",
     "unfold.contrib.inlines",
     "unfold.contrib.simple_history",
     "unfold.contrib.import_export",
     "simple_history",
     "import_export",
+]
+
+MY_APPS = [
+    "user",
+    "univer.employee",
+    "univer.student",
+    "univer.branch",
+    "purchase",
+]
+
+INSTALLED_APPS = [
+    *THIRD_APPS,
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "user",
-    "univer.employee",
-    "univer.student",
-    "univer.branch",
-    "purchase",
+    *MY_APPS
 ]
 
 MIDDLEWARE = [
@@ -73,7 +80,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'config/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -194,53 +201,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Electron Admin",
-    "site_header": "Electron",
-    "site_brand": "Electron",
-    # "site_logo": "books/img/logo.png",
-    "login_logo": None,
-    "login_logo_dark": None,
-    "site_logo_classes": "img-circle",
-    "site_icon": None,
-    "welcome_sign": "Welcome to the library",
-    "copyright": "Acme Library Ltd",
-    # "search_model": ["auth.User", "auth.Group"],
-    "user_avatar": None,
-    "topmenu_links": [
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"model": "user.User"},
-    ],
-    "usermenu_links": [{"model": "user.user"}],
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    "hide_apps": [],
-    "hide_models": [],
-    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
-    # "custom_links": {
-    #     "books": [{
-    #         "name": "Make Messages",
-    #         "url": "make_messages",
-    #         "icon": "fas fa-comments",
-    #         "permissions": ["books.view_book"]
-    #     }]
-    # },
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-    },
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
-    "related_modal_active": False,
-    "custom_css": None,
-    "custom_js": None,
-    "use_google_fonts_cdn": True,
-    "show_ui_builder": False,
-    "changeform_format": "horizontal_tabs",
-    "changeform_format_overrides": {
-        "auth.user": "collapsible",
-        "auth.group": "vertical_tabs",
-    },
-    # "language_chooser": True,
+UNFOLD = {
+    "SITE_TITLE": "U N E T",
+    "SITE_HEADER": "U N E T",
 }

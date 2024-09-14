@@ -1,13 +1,12 @@
 from django.contrib import admin
 from . import models
-from django.contrib.admin.models import LogEntry
+from django.contrib.auth.models import Group
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from univer.employee.models import EmployeeProfile
 from univer.student.models import StudentProfile
-from univer.branch.models import UniverBranch
-from unfold.admin import ModelAdmin, StackedInline, TabularInline
-from import_export.admin import ImportExportModelAdmin
-from unfold.contrib.import_export.forms import ExportForm, ImportForm, SelectableFieldsExportForm
-
+from unfold.admin import ModelAdmin, StackedInline
+from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 
 # User
 class EmployeeProfileStackedInline(StackedInline):
@@ -21,5 +20,14 @@ class StudentProfileStackedInline(StackedInline):
 
 
 @admin.register(models.User)
-class UserAdmin(ModelAdmin):
+class UserAdmin(BaseUserAdmin, ModelAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    change_password_form = AdminPasswordChangeForm
     inlines = [EmployeeProfileStackedInline, StudentProfileStackedInline]
+
+admin.site.unregister(Group)
+
+@admin.register(Group)
+class GroupAdmin(BaseGroupAdmin, ModelAdmin):
+    pass
