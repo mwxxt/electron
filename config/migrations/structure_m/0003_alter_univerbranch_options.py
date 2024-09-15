@@ -4,7 +4,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('branch', '0002_alter_univerbranch_logo'),
+        ('structure', '0002_alter_univerbranch_logo'),
     ]
 
     operations = [
