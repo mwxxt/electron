@@ -49,7 +49,7 @@ MY_APPS = [
     "user",
     "univer.employee",
     "univer.student",
-    "univer.branch",
+    "univer.structure",
     "purchase",
 ]
 
@@ -142,7 +142,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "electron",
-        "USER": "madi",
+        "USER": "mwxxt",
         "PASSWORD": "4041954",
         "HOST": "localhost",
         "PORT": "5432",
@@ -153,7 +153,7 @@ MIGRATION_MODULES = {
     "user": "config.migrations.user_m",
     "employee": "config.migrations.employee_m",
     "student": "config.migrations.student_m",
-    "branch": "config.migrations.branch_m",
+    "structure": "config.migrations.structure_m",
     "purchase": "config.migrations.purchase_m",
 }
 
